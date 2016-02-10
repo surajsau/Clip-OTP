@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="disclaimer">#f4cdcd</color>
+    <color name="disclaimer_text">#a93636</color>
+    <color name="diy">#0C6D51</color>
+
+    <color name="correct">#aafbb8</color>
+    <color name="correct_text">#2c923d</color>
+
+    <color name="toolbarTransparent">#00FFFFFF</color>
+</resources>
