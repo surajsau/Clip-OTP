@@ -14,4 +14,5 @@
     <string name="privacy_intro">So you\'re worried that we\'re secretly storing all your SMS. Worry not!
         We shall tell you how we\'re doing things.
     </string>
+    <string name="title_activity_sms_listing">Previous SMS</string>
 </resources>

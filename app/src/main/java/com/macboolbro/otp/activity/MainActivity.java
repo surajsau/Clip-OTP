@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements IConstants, View.
                 startSettingsActivity(SCREEN_DIY);
                 break;
             case R.id.llPrivacy:
-                startSettingsActivity(SCREEN_PRIVACY);
+//                startSettingsActivity(SCREEN_PRIVACY);
+                startActivity(new Intent(this, SmsListingActivity.class));
                 break;
         }
     }

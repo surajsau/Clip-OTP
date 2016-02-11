@@ -7,6 +7,7 @@ public interface IConstants {
     int NOTIFICATION_ID = 1;
     int CLIPBOARD_REQUEST = 0;
     String SMS_MESSAGE_NOTIFICATION_INTENT = "sms_message_notification_intent";
+    String SMS_MESSAGE_SENDER = "sms_message_sender";
     String COPY_INTENT_FILTER = "filter_copy_intent";
     String CLIPBOARD_STRING = "clipboard_string";
     String CLIP_DATA = "clip_data";

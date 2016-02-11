@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OTP.iml" filepath="$PROJECT_DIR$/OTP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Clip-OTP.iml" filepath="$PROJECT_DIR$/Clip-OTP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

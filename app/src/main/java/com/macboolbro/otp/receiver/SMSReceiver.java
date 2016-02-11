@@ -40,6 +40,7 @@ public class SMSReceiver extends BroadcastReceiver implements IConstants {
         Log.d(TAG, "message: " + smsMessage.getMessageBody());
 
         Intent notificationIntent = new Intent(context, NotificationService.class);
+        notificationIntent.putExtra(SMS_MESSAGE_SENDER, smsMessage.getDisplayOriginatingAddress());
         notificationIntent.putExtra(SMS_MESSAGE_NOTIFICATION_INTENT, smsMessage.getDisplayMessageBody());
 
         context.startService(notificationIntent);
