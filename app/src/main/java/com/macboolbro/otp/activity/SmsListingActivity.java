@@ -90,6 +90,7 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
     @Override
     public void onItemDelete(OTPModel model) {
         dataSource.deleteOTPModel(model);
+        models.remove(model);
     }
 
     public Context getActivity() {

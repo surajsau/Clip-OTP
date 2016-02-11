@@ -41,4 +41,19 @@ public class OTPModel {
     public void setSender(String sender) {
         this.sender = sender;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        OTPModel obj = (OTPModel)o;
+        return (id == obj.getId())
+                && (otp.equals(obj.getOtp()))
+                && (message.equals(obj.getMessage()))
+                && (sender.equals(obj.getSender()));
+    }
+
+    @Override
+    public int hashCode() {
+        Long _id = new Long(id);
+        return _id.hashCode() + otp.hashCode() + message.hashCode() + sender.hashCode();
+    }
 }

@@ -111,6 +111,8 @@ public class OTPRecyclerAdapter extends RecyclerView.Adapter<OTPRecyclerAdapter.
 
         public void deleteModel() {
             dismissListener.onItemDelete(model);
+            mModels.remove(model);
+            notifyDataSetChanged();
         }
     }
 }
