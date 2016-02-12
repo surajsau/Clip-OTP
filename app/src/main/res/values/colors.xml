@@ -12,4 +12,5 @@
     <color name="correct_text">#2c923d</color>
 
     <color name="toolbarTransparent">#00FFFFFF</color>
+    <color name="light_gray">#edecec</color>
 </resources>

@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.macboolbro.otp.R;
@@ -73,6 +77,8 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupDataSource() {
@@ -95,5 +101,32 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
 
     public Context getActivity() {
         return SmsListingActivity.this;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_sms_listing, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
+            case R.id.menu_delete: {
+                deleteAllSms();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteAllSms() {
+        models.clear();
+        dataSource.deleteAll();
+        adapter.clearData();
     }
 }

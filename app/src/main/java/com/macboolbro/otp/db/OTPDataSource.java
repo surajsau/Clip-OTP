@@ -60,6 +60,12 @@ public class OTPDataSource implements IDbConstants {
         return cursor.getInt(0);
     }
 
+    public void deleteAll() {
+        db.execSQL("DELETE * FROM " + TABLE_OTP_NOTIFICATIONS);
+
+        Log.d(TAG, "delete all");
+    }
+
     public void deleteOTPModel(OTPModel model) {
         long id = model.getId();
         db.delete(TABLE_OTP_NOTIFICATIONS, _ID + " = " + id, null);

@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
 
         <TextView android:id="@+id/tvSender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
             android:text="YD-Citibk"
-            android:padding="5dp"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
@@ -27,10 +30,10 @@
             <TextView android:id="@+id/tvOtp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/disclaimer"
                 android:text="123456"
-                android:textColor="@color/disclaimer_text"
+                android:textColor="@android:color/black"
                 android:textSize="24sp"
+                android:layout_marginRight="10dp"
                 android:layout_gravity="center_vertical"/>
 
             <ImageButton android:id="@+id/btnDismiss"
@@ -38,16 +41,26 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/close"
                 android:background="@null"
-                android:layout_gravity="center_vertical"/>
+                android:scaleType="fitStart"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/disclaimer_text" />
         </LinearLayout>
     </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
 
     <TextView android:id="@+id/tvSmsBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your OTP for enhaced security is 123456 for the request no.12345667, placd with Citibank"
-        android:textSize="18sp"
-        android:layout_marginTop="5dp"/>
+        android:textSize="15sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
     <Button android:id="@+id/btnCopyOtp"
         android:layout_width="match_parent"
@@ -56,8 +69,8 @@
         android:textColor="@android:color/white"
         android:text="Copy otp"
         android:minHeight="0dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_marginTop="10dp"/>
 
 </LinearLayout>

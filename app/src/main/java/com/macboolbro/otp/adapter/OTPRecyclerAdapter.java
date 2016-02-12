@@ -98,6 +98,7 @@ public class OTPRecyclerAdapter extends RecyclerView.Adapter<OTPRecyclerAdapter.
 
                     Toast.makeText(mContext, "Removed", Toast.LENGTH_SHORT).show();
                 }
+                break;
 
                 case R.id.btnCopyOtp: {
                     ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
@@ -106,6 +107,7 @@ public class OTPRecyclerAdapter extends RecyclerView.Adapter<OTPRecyclerAdapter.
 
                     Toast.makeText(mContext, "OTP has been copied", Toast.LENGTH_SHORT).show();
                 }
+                break;
             }
         }
 
@@ -114,5 +116,10 @@ public class OTPRecyclerAdapter extends RecyclerView.Adapter<OTPRecyclerAdapter.
             mModels.remove(model);
             notifyDataSetChanged();
         }
+    }
+
+    public void clearData() {
+        mModels.clear();
+        notifyDataSetChanged();
     }
 }
