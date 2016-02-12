@@ -11,18 +11,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.macboolbro.otp.AppPreference;
+import com.macboolbro.otp.IConstants;
 import com.macboolbro.otp.R;
 import com.macboolbro.otp.adapter.OTPRecyclerAdapter;
 import com.macboolbro.otp.db.OTPDataSource;
 import com.macboolbro.otp.db.OTPModel;
 import com.macboolbro.otp.listener.OnItemDeleteListener;
+import com.rey.material.widget.Switch;
 
 import java.util.ArrayList;
 
-public class SmsListingActivity extends AppCompatActivity implements OnItemDeleteListener {
+public class SmsListingActivity extends AppCompatActivity implements OnItemDeleteListener,
+        Switch.OnCheckedChangeListener{
 
     private static final String TAG = SmsListingActivity.class.getSimpleName();
 
@@ -32,6 +38,11 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
     private RecyclerView rlOtpSmsList;
     private LinearLayoutManager llmOtpList;
     private OTPRecyclerAdapter adapter;
+    private Switch swNotifications;
+    private TextView tvHelper;
+
+    private AppPreference preference;
+    private boolean isNotificationEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +76,22 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
     }
 
     private void initResources() {
+        preference = new AppPreference(this);
+        isNotificationEnabled = preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false);
+
         rlOtpSmsList = (RecyclerView) findViewById(R.id.rlSmsList);
+        swNotifications = (Switch) findViewById(R.id.swNotifications);
+        tvHelper = (TextView) findViewById(R.id.tvHelper);
 
         llmOtpList = new LinearLayoutManager(this);
         adapter = new OTPRecyclerAdapter(this, models);
 
         rlOtpSmsList.setLayoutManager(llmOtpList);
         rlOtpSmsList.setAdapter(adapter);
+
+        //set checked status of switch..
+        swNotifications.setChecked(preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false));
+        swNotifications.setOnCheckedChangeListener(this);
     }
 
     private void setupToolbar() {
@@ -128,5 +148,18 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
         models.clear();
         dataSource.deleteAll();
         adapter.clearData();
+    }
+
+    private void setHelperText(boolean isNotificationEnabled) {
+        if(isNotificationEnabled)
+            tvHelper.setText("Turn off notification");
+        else
+            tvHelper.setText("Turn on notification");
+    }
+
+    @Override
+    public void onCheckedChanged(Switch view, boolean checked) {
+        setHelperText(checked);
+        preference.putBoolean(IConstants.NOTIFICATION_ENABLED, checked);
     }
 }

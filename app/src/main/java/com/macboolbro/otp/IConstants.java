@@ -21,4 +21,6 @@ public interface IConstants {
     String SCREEN_TYPE = "screen_type";
     String SCREEN_DIY = "screen_diy";
     String SCREEN_PRIVACY = "screen_privacy";
+
+    String NOTIFICATION_ENABLED = "notification_enabled";
 }

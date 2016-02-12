@@ -1,4 +1,4 @@
-package com.macboolbro.otp;
+package com.macboolbro.otp.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,6 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.macboolbro.otp.AppPreference;
+import com.macboolbro.otp.IConstants;
+import com.macboolbro.otp.R;
+import com.macboolbro.otp.Util;
 import com.macboolbro.otp.db.OTPDataSource;
 import com.macboolbro.otp.receiver.ClipboardReceiver;
 
@@ -23,6 +27,7 @@ public class NotificationService extends Service implements IConstants {
     private ClipboardReceiver receiver;
 
     private OTPDataSource otpDataSource;
+    private AppPreference preference;
 
     @Nullable
     @Override
@@ -32,6 +37,8 @@ public class NotificationService extends Service implements IConstants {
 
     @Override
     public void onCreate() {
+        preference = new AppPreference(this);
+
         receiver = new ClipboardReceiver();
         otpDataSource = new OTPDataSource(this);
         otpDataSource.open();
@@ -41,6 +48,7 @@ public class NotificationService extends Service implements IConstants {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        boolean isNotificationEnabled = preference.getBoolean(NOTIFICATION_ENABLED, false);
         String message = intent.getStringExtra(SMS_MESSAGE_NOTIFICATION_INTENT);
         String sender = intent.getStringExtra(SMS_MESSAGE_SENDER);
 
@@ -48,7 +56,8 @@ public class NotificationService extends Service implements IConstants {
         registerReceiver(receiver, new IntentFilter(COPY_INTENT_FILTER));
 
         if(message != null && Util.otpFromMessage(message) != null
-                && Util.otpFromMessage(message).length() != 0) {
+                && Util.otpFromMessage(message).length() != 0
+                && isNotificationEnabled) {
 
             otpDataSource.addOTPModel(message, sender);
             showHeadsUpNotification(Util.otpFromMessage(message), sender);

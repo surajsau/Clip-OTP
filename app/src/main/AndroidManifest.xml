@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".NotificationService" />
+        <service android:name=".service.NotificationService" />
 
         <receiver android:name=".receiver.SMSReceiver">
             <intent-filter>

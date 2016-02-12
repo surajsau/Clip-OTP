@@ -10,7 +10,7 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 
 import com.macboolbro.otp.IConstants;
-import com.macboolbro.otp.NotificationService;
+import com.macboolbro.otp.service.NotificationService;
 
 /**
  * Created by MacboolBro on 08/02/16.

@@ -28,47 +28,49 @@
         android:background="@color/light_gray"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--<LinearLayout android:orientation="vertical"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:weightSum="10">-->
+            <FrameLayout
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <!--<TextView-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="7"-->
-                    <!--android:textSize="15sp"-->
-                    <!--android:text="Your previously received OTP SMS's in case you missed them before."-->
-                    <!--android:layout_gravity="center_vertical"/>-->
+                <TextView android:id="@+id/tvHelper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Turn on notifications"
+                    android:layout_gravity="center_vertical|start"/>
 
-                <!--<Button android:id="@+id/btnDeleteAll"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="3"-->
-                    <!--android:background="@color/disclaimer"-->
-                    <!--android:text="Delete"-->
-                    <!--android:drawableLeft="@drawable/remove"-->
-                    <!--android:drawableTint="@color/disclaimer_text"-->
-                    <!--android:textColor="@color/disclaimer_text"-->
-                    <!--android:minHeight="0dp"-->
-                    <!--android:minWidth="0dp"-->
-                    <!--android:padding="5dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:textSize="15sp"/>-->
-            <!--</LinearLayout>-->
+                <com.rey.material.widget.Switch
+                    android:id="@+id/swNotifications"
+                    style="@style/Material.Widget.Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:checked="false"
+                    android:layout_gravity="center_vertical|end"/>
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/medium_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rlSmsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"/>
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
 
-        <!--</LinearLayout>-->
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
