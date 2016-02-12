@@ -32,10 +32,6 @@
         </receiver>
 
         <activity
-            android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activity.SmsListingActivity"
             android:label="@string/title_activity_sms_listing"
             android:theme="@style/AppTheme.NoActionBar"></activity>

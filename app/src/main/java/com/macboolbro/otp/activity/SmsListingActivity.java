@@ -77,7 +77,7 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
 
     private void initResources() {
         preference = new AppPreference(this);
-        isNotificationEnabled = preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false);
+//        isNotificationEnabled = preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false);
 
         rlOtpSmsList = (RecyclerView) findViewById(R.id.rlSmsList);
         swNotifications = (Switch) findViewById(R.id.swNotifications);
@@ -90,7 +90,7 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
         rlOtpSmsList.setAdapter(adapter);
 
         //set checked status of switch..
-        swNotifications.setChecked(preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false));
+//        swNotifications.setChecked(preference.getBoolean(IConstants.NOTIFICATION_ENABLED, false));
         swNotifications.setOnCheckedChangeListener(this);
     }
 
@@ -160,6 +160,6 @@ public class SmsListingActivity extends AppCompatActivity implements OnItemDelet
     @Override
     public void onCheckedChanged(Switch view, boolean checked) {
         setHelperText(checked);
-        preference.putBoolean(IConstants.NOTIFICATION_ENABLED, checked);
+//        preference.putBoolean(IConstants.NOTIFICATION_ENABLED, checked);
     }
 }

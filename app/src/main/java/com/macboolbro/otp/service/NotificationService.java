@@ -26,7 +26,6 @@ public class NotificationService extends Service implements IConstants {
     private static final String TAG = NotificationService.class.getSimpleName();
     private ClipboardReceiver receiver;
 
-    private OTPDataSource otpDataSource;
     private AppPreference preference;
 
     @Nullable
@@ -40,15 +39,15 @@ public class NotificationService extends Service implements IConstants {
         preference = new AppPreference(this);
 
         receiver = new ClipboardReceiver();
-        otpDataSource = new OTPDataSource(this);
-        otpDataSource.open();
 
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        boolean isNotificationEnabled = preference.getBoolean(NOTIFICATION_ENABLED, false);
+        boolean isNotificationEnabled = preference.getBoolean(PREF_NOTIFICATION_ENABLED, false);
+
+        String timeStamp = intent.getStringExtra(SMS_TIME_STAMP);
         String message = intent.getStringExtra(SMS_MESSAGE_NOTIFICATION_INTENT);
         String sender = intent.getStringExtra(SMS_MESSAGE_SENDER);
 
@@ -59,24 +58,27 @@ public class NotificationService extends Service implements IConstants {
                 && Util.otpFromMessage(message).length() != 0
                 && isNotificationEnabled) {
 
-            otpDataSource.addOTPModel(message, sender);
-            showHeadsUpNotification(Util.otpFromMessage(message), sender);
+            preference.putString(PREF_SMS_OTP, Util.otpFromMessage(message));
+            preference.putString(PREF_SMS_MESSAGE, message);
+            preference.putString(PREF_SMS_SENDER, sender);
+            preference.putString(PREF_SMS_TIME, timeStamp);
+            showHeadsUpNotification(message, sender);
 
         }
 
         return START_STICKY;
     }
 
-    private void showHeadsUpNotification(String otp, String sender) {
+    private void showHeadsUpNotification(String message, String sender) {
         Log.d(TAG, "sender: " + sender);
-        Log.d(TAG, "otp: " + otp);
+        Log.d(TAG, "otp: " + Util.otpFromMessage(message));
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setContentTitle(otp)
-                .setContentText(sender)
+                .setContentTitle(Util.otpFromMessage(message) + " - " + sender)
+                .setContentText(message)
                 .setPriority(Notification.PRIORITY_HIGH)
                 .addAction(R.drawable.icon_copy, "Copy to clipboard",
-                        Util.getClipboardPendingIntent(this, otp))
+                        Util.getClipboardPendingIntent(this, Util.otpFromMessage(message)))
                 .setSmallIcon(android.R.drawable.ic_dialog_map);
 
         Intent push = new Intent();

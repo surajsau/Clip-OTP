@@ -10,6 +10,7 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 
 import com.macboolbro.otp.IConstants;
+import com.macboolbro.otp.Util;
 import com.macboolbro.otp.service.NotificationService;
 
 /**
@@ -40,6 +41,7 @@ public class SMSReceiver extends BroadcastReceiver implements IConstants {
         Log.d(TAG, "message: " + smsMessage.getMessageBody());
 
         Intent notificationIntent = new Intent(context, NotificationService.class);
+        notificationIntent.putExtra(SMS_TIME_STAMP, Util.getTime(smsMessage.getTimestampMillis()));
         notificationIntent.putExtra(SMS_MESSAGE_SENDER, smsMessage.getDisplayOriginatingAddress());
         notificationIntent.putExtra(SMS_MESSAGE_NOTIFICATION_INTENT, smsMessage.getDisplayMessageBody());
 
