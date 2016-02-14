@@ -6,23 +6,24 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.macboolbro.otp.AppPreference;
 import com.macboolbro.otp.IConstants;
 import com.macboolbro.otp.R;
-import com.macboolbro.otp.adapter.OTPRecyclerAdapter;
+import com.macboolbro.otp.Util;
 import com.rey.material.widget.Switch;
 
 public class MainActivity extends AppCompatActivity implements IConstants,
@@ -30,23 +31,33 @@ public class MainActivity extends AppCompatActivity implements IConstants,
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private FrameLayout flDIY;
     private FrameLayout flPrivacy;
+    private FrameLayout flAppTour;
 
     private Button btnOtp;
     private Switch swNotifications;
     private TextView tvHelper;
     private TextView tvSender;
     private TextView tvMessage;
+    private TextView tvTimeStamp;
     private Button btnOtpCopy;
+    private ImageButton btnTwitter;
+    private ImageButton btnLinkedin;
+    private ImageButton btnGithub;
 
     private AppPreference preference;
     private boolean isNotificationEnabled;
+    private String otp;
+    private String message;
+    private String sender;
+    private String timeStamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getDataFromPreference();
 
         initResources();
         setupToolbar();
@@ -56,35 +67,56 @@ public class MainActivity extends AppCompatActivity implements IConstants,
         setOnClickListeners();
     }
 
+    private void getDataFromPreference() {
+        preference = new AppPreference(this);
+
+        isNotificationEnabled = preference.getBoolean(PREF_NOTIFICATION_ENABLED, false);
+        timeStamp = preference.getString(PREF_SMS_TIME, "");
+        sender = preference.getString(PREF_SMS_SENDER, "");
+        message = preference.getString(PREF_SMS_MESSAGE, "");
+        otp = preference.getString(PREF_SMS_OTP, "");
+    }
+
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("OTP");
+        getSupportActionBar().setTitle("Clip OTP");
     }
 
     private void initResources() {
-        preference = new AppPreference(this);
-        isNotificationEnabled = preference.getBoolean(PREF_NOTIFICATION_ENABLED, false);
-
-        flDIY = (FrameLayout) findViewById(R.id.llDIY);
         flPrivacy = (FrameLayout) findViewById(R.id.llPrivacy);
+        flAppTour = (FrameLayout) findViewById(R.id.llAppTour);
 
         btnOtp = (Button) findViewById(R.id.btnOtp);
         btnOtpCopy = (Button) findViewById(R.id.btnCopyOtp);
         swNotifications = (Switch) findViewById(R.id.swNotifications);
+
+        btnGithub = (ImageButton) findViewById(R.id.btnGithub);
+        btnLinkedin = (ImageButton) findViewById(R.id.btnLinkedin);
+        btnTwitter = (ImageButton) findViewById(R.id.btnTwitter);
 
         swNotifications.setChecked(isNotificationEnabled);
 
         tvHelper = (TextView) findViewById(R.id.tvHelper);
         tvMessage = (TextView) findViewById(R.id.tvSmsBody);
         tvSender = (TextView) findViewById(R.id.tvSender);
+        tvTimeStamp = (TextView) findViewById(R.id.tvTimeStamp);
 
+        populateCard();
     }
 
     private void setOnClickListeners() {
-        flDIY.setOnClickListener(this);
         flPrivacy.setOnClickListener(this);
+        flAppTour.setOnClickListener(this);
+
+        btnOtp.setOnClickListener(this);
+        btnOtpCopy.setOnClickListener(this);
+        btnTwitter.setOnClickListener(this);
+        btnLinkedin.setOnClickListener(this);
+        btnGithub.setOnClickListener(this);
+
+        swNotifications.setOnCheckedChangeListener(this);
     }
 
     private void checkForSmsPermissions() {
@@ -100,30 +132,61 @@ public class MainActivity extends AppCompatActivity implements IConstants,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.llDIY:
-                startSmsListingActivity();
-                break;
             case R.id.llPrivacy:
-                startActivity(new Intent(this, SmsListingActivity.class));
+                startInstructionsActivity();
+                break;
+
+            case R.id.llAppTour:
+                startIntroductionActivity();
                 break;
 
             case R.id.btnCopyOtp:
             case R.id.btnOtp: {
-
+                copyToClipboard();
             }
             break;
+
+            case R.id.btnGithub:
+                startGithub();
+                break;
+
+            case R.id.btnLinkedin:
+                startLinkedIn();
+                break;
+
+            case R.id.btnTwitter:
+                startTwitter();
+                break;
         }
     }
 
-    private void startSmsListingActivity() {
-        Intent settingsIntent = new Intent(this, SmsListingActivity.class);
+    private void startInstructionsActivity() {
+        Intent settingsIntent = new Intent(this, InstructionsActivity.class);
+        startActivity(settingsIntent);
+    }
+
+    private void startIntroductionActivity() {
+        Intent settingsIntent = new Intent(this, IntroductionActivity.class);
         startActivity(settingsIntent);
     }
 
     @Override
     public void onCheckedChanged(Switch view, boolean checked) {
         setHelperText(checked);
-        preference.putBoolean(IConstants.PREF_NOTIFICATION_ENABLED, checked);
+        preference.putBoolean(PREF_NOTIFICATION_ENABLED, checked);
+    }
+
+    @Override
+    protected void onPause() {
+        preference.putBoolean(PREF_NOTIFICATION_ENABLED, swNotifications.isChecked());
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        isNotificationEnabled = preference.getBoolean(PREF_NOTIFICATION_ENABLED, false);
+        swNotifications.setChecked(isNotificationEnabled);
+        super.onResume();
     }
 
     private void setHelperText(boolean isNotificationEnabled) {
@@ -139,5 +202,28 @@ public class MainActivity extends AppCompatActivity implements IConstants,
         clipboard.setPrimaryClip(clip);
 
         Toast.makeText(this, "OTP has been copied", Toast.LENGTH_SHORT).show();
+    }
+
+    private void startTwitter() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=" + TWITTER_USERNAME)));
+        }catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/" + TWITTER_USERNAME)));
+        }
+    }
+
+    private void startLinkedIn() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(LINKEDIN_URL)));
+    }
+
+    private void startGithub() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_URL)));
+    }
+
+    private void populateCard() {
+        btnOtp.setText(Util.getValue(otp));
+        tvSender.setText(Util.getValue(sender));
+        tvMessage.setText(Util.getValue(message));
+        tvTimeStamp.setText(Util.getValue(timeStamp));
     }
 }

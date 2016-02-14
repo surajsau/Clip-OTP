@@ -15,7 +15,6 @@ import com.macboolbro.otp.AppPreference;
 import com.macboolbro.otp.IConstants;
 import com.macboolbro.otp.R;
 import com.macboolbro.otp.Util;
-import com.macboolbro.otp.db.OTPDataSource;
 import com.macboolbro.otp.receiver.ClipboardReceiver;
 
 /**
@@ -58,6 +57,10 @@ public class NotificationService extends Service implements IConstants {
                 && Util.otpFromMessage(message).length() != 0
                 && isNotificationEnabled) {
 
+            //clear preferences to prevent OutOfMemoryException..
+            preference.clearPreferences();
+            preference.putBoolean(PREF_NOTIFICATION_ENABLED, isNotificationEnabled);
+
             preference.putString(PREF_SMS_OTP, Util.otpFromMessage(message));
             preference.putString(PREF_SMS_MESSAGE, message);
             preference.putString(PREF_SMS_SENDER, sender);
@@ -75,11 +78,11 @@ public class NotificationService extends Service implements IConstants {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setContentTitle(Util.otpFromMessage(message) + " - " + sender)
-                .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message.toString()))
                 .setPriority(Notification.PRIORITY_HIGH)
                 .addAction(R.drawable.icon_copy, "Copy to clipboard",
                         Util.getClipboardPendingIntent(this, Util.otpFromMessage(message)))
-                .setSmallIcon(android.R.drawable.ic_dialog_map);
+                .setSmallIcon(R.mipmap.ic_launcher);
 
         Intent push = new Intent();
         push.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

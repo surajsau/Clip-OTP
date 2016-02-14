@@ -15,5 +15,6 @@
         We shall tell you how we\'re doing things.
     </string>
     <string name="title_activity_sms_listing">Previous SMS</string>
+    <string name="app_intro">App Tour</string>
     <string name="otp_preferences">com.halfplatepoha.otp.preferences</string>
 </resources>

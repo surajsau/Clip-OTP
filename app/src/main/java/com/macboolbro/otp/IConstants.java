@@ -13,6 +13,10 @@ public interface IConstants {
     String CLIPBOARD_STRING = "clipboard_string";
     String CLIP_DATA = "clip_data";
 
+    String TWITTER_USERNAME = "theRoshogulla";
+    String LINKEDIN_URL = "https://www.linkedin.com/in/suraj-sau-5826784a";
+    String GITHUB_URL = "https://github.com/surajsau";
+
     String SMS_BUNDLE = "pdus";
     int SMS_PERMISSIONS = 101;
 

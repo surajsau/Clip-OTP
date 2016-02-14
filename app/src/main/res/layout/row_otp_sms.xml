@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
@@ -28,15 +27,26 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
 
-    <TextView android:id="@+id/tvSender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:text="YD-Citibk"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingLeft="10dp"
-        android:textColor="@android:color/black"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView android:id="@+id/tvSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:text="YD-Citibk"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black" />
+
+        <TextView android:id="@+id/tvTimeStamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_gravity="end|center_vertical"
+            android:text="00:00 am, 12 Apr"/>
+    </FrameLayout>
 
     <TextView android:id="@+id/tvSmsBody"
         android:layout_width="match_parent"

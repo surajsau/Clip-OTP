@@ -11,16 +11,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".OTPApplication">
+        android:name=".OTPApplication"
+        android:largeHeap="true">
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
 
         <service android:name=".service.NotificationService" />
@@ -31,10 +32,20 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".activity.SmsListingActivity"
-            android:label="@string/title_activity_sms_listing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.IntroductionActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.InstructionsActivity"
+            android:label="@string/app_intro"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

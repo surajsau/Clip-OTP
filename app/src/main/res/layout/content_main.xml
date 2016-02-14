@@ -46,123 +46,160 @@
                 android:layout_marginBottom="5dp"/>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last used OTP message"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"/>
+
         <include layout="@layout/row_otp_sms"/>
 
         <FrameLayout android:id="@+id/llPrivacy"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/privacy" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:alpha="0.5"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:orientation="vertical"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:text="Worried"
-                android:textAllCaps="false"
-                android:layout_gravity="center_horizontal"
-                android:textSize="30sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@android:color/white"
-                android:text="..about us going through your SMS?"/>
-        </LinearLayout>
+            android:layout_marginTop="10dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="top"
-            android:background="@android:color/white"/>
-    </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"/>
 
-    <FrameLayout android:id="@+id/flAbout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/about_us" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/black"
-            android:alpha="0.4"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="✦ connect with us on ✦"
-                android:textColor="@android:color/white"
-                android:layout_gravity="center_horizontal"
-                android:textSize="18sp"
-                android:layout_marginBottom="20dp"/>
-
-            <LinearLayout android:orientation="horizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3">
-
-                <ImageButton android:id="@+id/btnLinkedin"
-                    android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:src="@drawable/linkedin"
                     android:textColor="@android:color/white"
-                    android:layout_gravity="center_horizontal" />
-
-                <ImageButton android:id="@+id/btnTwitter"
-                    android:layout_width="0dp"
+                    android:text="How this works"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:src="@drawable/twitter"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageButton android:id="@+id/btnBehance"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:src="@drawable/behance"
+                    android:layout_gravity="center_horizontal"
                     android:textColor="@android:color/white"
-                    android:layout_gravity="center_horizontal"/>
-
+                    android:text="..for all the grown ups out there"/>
             </LinearLayout>
-        </LinearLayout>
-        <View
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="top"
+                android:background="@android:color/white"/>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/llAppTour"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="top"
-            android:background="@android:color/white"/>
-    </FrameLayout>
+            android:layout_height="120dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="Take a tour"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@android:color/white"
+                    android:text="..for those who liked it\n&amp; for those who missed it"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="top"
+                android:background="@android:color/white"/>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/flAbout"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✦ connect with me on ✦"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="20dp"/>
+
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3">
+
+                    <ImageButton android:id="@+id/btnLinkedin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:src="@drawable/linkedin"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal" />
+
+                    <ImageButton android:id="@+id/btnTwitter"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:src="@drawable/twitter"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <ImageButton android:id="@+id/btnGithub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:src="@drawable/github"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="top"
+                android:background="@android:color/white"/>
+        </FrameLayout>
 </LinearLayout>

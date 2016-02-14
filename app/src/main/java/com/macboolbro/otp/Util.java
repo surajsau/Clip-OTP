@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.macboolbro.otp.service.NotificationService;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -60,12 +62,19 @@ public class Util implements IConstants {
 
         return ((hour%12 != 0) ? (((hour%12) < 10 ? "0" : "") + (hour%12)) : "12")
                 + ":"
-                + minute
+                + ((minute < 10 ? "0" : "") + minute)
                 + (hour < 12 ? "am" : "pm")
                 + " "
                 + day
                 + " "
                 + months[month];
 
+    }
+
+    public static String getValue(String s) {
+        if(s != null && s.length() != 0)
+            return s;
+        else
+            return "--";
     }
 }
