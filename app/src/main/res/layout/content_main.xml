@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.macboolbro.otp.MainActivity"
+    tools:context="com.halfplatepoha.otp.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:paddingTop="?android:actionBarSize"
     android:background="@color/light_gray">
 
         <LinearLayout android:orientation="vertical"

@@ -1,4 +1,4 @@
-package com.macboolbro.otp;
+package com.halfplatepoha.otp;
 
 import org.junit.Test;
 

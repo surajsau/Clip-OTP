@@ -1,4 +1,4 @@
-package com.macboolbro.otp;
+package com.halfplatepoha.otp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

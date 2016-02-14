@@ -1,4 +1,4 @@
-package com.macboolbro.otp.receiver;
+package com.halfplatepoha.otp.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.macboolbro.otp.util.IConstants;
+import com.halfplatepoha.otp.util.IConstants;
 
 /**
  * Created by MacboolBro on 08/02/16.

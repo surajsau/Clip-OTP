@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.macboolbro.otp">
+    package="com.halfplatepoha.otp">
 
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -13,30 +13,30 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true">
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.halfplatepoha.otp.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <service android:name=".service.NotificationService" />
+        <service android:name="com.halfplatepoha.otp.service.NotificationService" />
 
-        <receiver android:name=".receiver.SMSReceiver">
+        <receiver android:name="com.halfplatepoha.otp.receiver.SMSReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.IntroductionActivity"
+        <activity android:name="com.halfplatepoha.otp.activity.IntroductionActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.InstructionsActivity"
+        <activity android:name="com.halfplatepoha.otp.activity.InstructionsActivity"
             android:label="@string/app_intro"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.SplashActivity"
+        <activity android:name="com.halfplatepoha.otp.activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:noHistory="true"
             android:screenOrientation="portrait">

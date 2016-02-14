@@ -1,9 +1,8 @@
-package com.macboolbro.otp.util;
+package com.halfplatepoha.otp.util;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.regex.Matcher;

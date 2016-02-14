@@ -1,6 +1,4 @@
-package com.macboolbro.otp.util;
-
-import java.util.regex.Pattern;
+package com.halfplatepoha.otp.util;
 
 /**
  * Created by MacboolBro on 08/02/16.
@@ -22,7 +20,7 @@ public interface IConstants {
     String SMS_BUNDLE = "pdus";
     int SMS_PERMISSIONS = 101;
 
-    String OTP = ".otp.";
+    String OTP = "otp";
     String PASSWORD = "password";
     String PASSCODE = "passcode";
     String PASSKEY = "passkey";
@@ -34,15 +32,9 @@ public interface IConstants {
 
     // logic used...
     // ....KEYWORD XXXXXX KEYWORD.... or XXXXXX KEYWORD... or ....KEYWORD XXXXXX
-    String OTP_STRING_REGEX = "(" + ALL_POSSIBLE_PREFIX_SUFFIX + ".[0-9]{4,8}." + ALL_POSSIBLE_PREFIX_SUFFIX + "?)"
-                                  + "|"
-                                  + "(^[0-9]{4,8}." + ALL_POSSIBLE_PREFIX_SUFFIX + ")";
+    String OTP_STRING_REGEX = "("+ ALL_POSSIBLE_PREFIX_SUFFIX +".[0-9]{4,8}."+ ALL_POSSIBLE_PREFIX_SUFFIX +"?)|((^|)[0-9]{4,8}."+ ALL_POSSIBLE_PREFIX_SUFFIX +")";
 
     String OTP_REGEX = "[0-9]+";
-
-    String SCREEN_TYPE = "screen_type";
-    String SCREEN_DIY = "screen_diy";
-    String SCREEN_PRIVACY = "screen_privacy";
 
     String PREF_NOTIFICATION_ENABLED = "notification_enabled";
     String PREF_SMS_MESSAGE = "sms_message";

@@ -1,4 +1,4 @@
-package com.macboolbro.otp.activity;
+package com.halfplatepoha.otp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import android.util.Log;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
-import com.macboolbro.otp.R;
-import com.macboolbro.otp.util.AppPreference;
-import com.macboolbro.otp.util.FadeTransformer;
-import com.macboolbro.otp.util.IConstants;
+import com.halfplatepoha.otp.R;
+import com.halfplatepoha.otp.util.AppPreference;
+import com.halfplatepoha.otp.util.FadeTransformer;
+import com.halfplatepoha.otp.util.IConstants;
 
 /**
  * Created by MacboolBro on 13/02/16.

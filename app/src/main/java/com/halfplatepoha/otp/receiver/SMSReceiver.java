@@ -1,4 +1,4 @@
-package com.macboolbro.otp.receiver;
+package com.halfplatepoha.otp.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,9 +9,9 @@ import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import com.macboolbro.otp.util.IConstants;
-import com.macboolbro.otp.util.Util;
-import com.macboolbro.otp.service.NotificationService;
+import com.halfplatepoha.otp.util.IConstants;
+import com.halfplatepoha.otp.util.Util;
+import com.halfplatepoha.otp.service.NotificationService;
 
 /**
  * Created by MacboolBro on 08/02/16.

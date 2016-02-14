@@ -1,4 +1,4 @@
-package com.macboolbro.otp.service;
+package com.halfplatepoha.otp.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,11 +11,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.macboolbro.otp.util.AppPreference;
-import com.macboolbro.otp.util.IConstants;
-import com.macboolbro.otp.R;
-import com.macboolbro.otp.util.Util;
-import com.macboolbro.otp.receiver.ClipboardReceiver;
+import com.halfplatepoha.otp.util.AppPreference;
+import com.halfplatepoha.otp.util.IConstants;
+import com.halfplatepoha.otp.R;
+import com.halfplatepoha.otp.util.Util;
+import com.halfplatepoha.otp.receiver.ClipboardReceiver;
 
 /**
  * Created by MacboolBro on 09/02/16.
@@ -46,27 +46,31 @@ public class NotificationService extends Service implements IConstants {
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean isNotificationEnabled = preference.getBoolean(PREF_NOTIFICATION_ENABLED, false);
 
-        String timeStamp = intent.getStringExtra(SMS_TIME_STAMP);
-        String message = intent.getStringExtra(SMS_MESSAGE_NOTIFICATION_INTENT);
-        String sender = intent.getStringExtra(SMS_MESSAGE_SENDER);
 
-        //register Clipboard broadcast receiver..
-        registerReceiver(receiver, new IntentFilter(COPY_INTENT_FILTER));
 
-        if(message != null && Util.otpFromMessage(message) != null
-                && Util.otpFromMessage(message).length() != 0
-                && isNotificationEnabled) {
+        if(intent != null) {
+            String timeStamp = intent.getStringExtra(SMS_TIME_STAMP);
+            String message = intent.getStringExtra(SMS_MESSAGE_NOTIFICATION_INTENT);
+            String sender = intent.getStringExtra(SMS_MESSAGE_SENDER);
 
-            //clear preferences to prevent OutOfMemoryException..
-            preference.clearPreferences();
-            preference.putBoolean(PREF_NOTIFICATION_ENABLED, isNotificationEnabled);
+            //register Clipboard broadcast receiver..
+            registerReceiver(receiver, new IntentFilter(COPY_INTENT_FILTER));
 
-            preference.putString(PREF_SMS_OTP, Util.otpFromMessage(message));
-            preference.putString(PREF_SMS_MESSAGE, message);
-            preference.putString(PREF_SMS_SENDER, sender);
-            preference.putString(PREF_SMS_TIME, timeStamp);
-            showHeadsUpNotification(message, sender);
+            if (message != null && Util.otpFromMessage(message) != null
+                    && Util.otpFromMessage(message).length() != 0
+                    && isNotificationEnabled) {
 
+                //clear preferences to prevent OutOfMemoryException..
+                preference.clearPreferences();
+                preference.putBoolean(PREF_NOTIFICATION_ENABLED, isNotificationEnabled);
+
+                preference.putString(PREF_SMS_OTP, Util.otpFromMessage(message));
+                preference.putString(PREF_SMS_MESSAGE, message);
+                preference.putString(PREF_SMS_SENDER, sender);
+                preference.putString(PREF_SMS_TIME, timeStamp);
+                showHeadsUpNotification(message, sender);
+
+            }
         }
 
         return START_STICKY;

@@ -1,4 +1,4 @@
-package com.macboolbro.otp.activity;
+package com.halfplatepoha.otp.activity;
 
 import android.Manifest;
 import android.content.ClipData;
@@ -19,10 +19,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.macboolbro.otp.util.AppPreference;
-import com.macboolbro.otp.util.IConstants;
-import com.macboolbro.otp.R;
-import com.macboolbro.otp.util.Util;
+import com.halfplatepoha.otp.util.AppPreference;
+import com.halfplatepoha.otp.util.IConstants;
+import com.halfplatepoha.otp.R;
+import com.halfplatepoha.otp.util.Util;
 import com.rey.material.widget.Switch;
 
 public class MainActivity extends AppCompatActivity implements IConstants,
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements IConstants,
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("Clip OTP");
+        getSupportActionBar().setTitle(getString(R.string.app_name));
     }
 
     private void initResources() {
@@ -197,11 +197,17 @@ public class MainActivity extends AppCompatActivity implements IConstants,
     }
 
     private void copyToClipboard() {
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText(IConstants.CLIP_DATA, btnOtp.getText().toString());
-        clipboard.setPrimaryClip(clip);
+        String otp = btnOtp.getText().toString();
 
-        Toast.makeText(this, "OTP has been copied", Toast.LENGTH_SHORT).show();
+        if(!otp.equals(getString(R.string.na))) {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(IConstants.CLIP_DATA, otp);
+            clipboard.setPrimaryClip(clip);
+
+            Toast.makeText(this, "OTP has been copied", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "You've no OTP to copy", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void startTwitter() {

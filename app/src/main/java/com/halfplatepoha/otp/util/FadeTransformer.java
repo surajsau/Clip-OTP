@@ -1,4 +1,4 @@
-package com.macboolbro.otp.util;
+package com.halfplatepoha.otp.util;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.macboolbro.otp.activity;
+package com.halfplatepoha.otp.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,8 +6,8 @@ import android.support.v4.content.ContextCompat;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
-import com.macboolbro.otp.R;
-import com.macboolbro.otp.util.FadeTransformer;
+import com.halfplatepoha.otp.R;
+import com.halfplatepoha.otp.util.FadeTransformer;
 
 /**
  * Created by MacboolBro on 13/02/16.
@@ -31,6 +31,10 @@ public class InstructionsActivity extends AppIntro {
         addFragment("Click paste and voila!",
                 "Click the \'Paste\' baloon and voila! You didn\'t even have to open the messaging app for the latest OTP!",
                 R.drawable.step_four);
+
+        addFragment("Easy settings",
+                "In case you accidently dismissed the notification, don\'t worry. Open Easy OTP and you\'ll find the SMS right there. Click on the OTP or the \'Copy\' button and voila!",
+                R.drawable.step_five);
 
         setCustomTransformer(new FadeTransformer());
         setBarColor(ContextCompat.getColor(this, R.color.colorPrimaryExtraLight));
