@@ -11,10 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.macboolbro.otp.AppPreference;
-import com.macboolbro.otp.IConstants;
+import com.macboolbro.otp.util.AppPreference;
+import com.macboolbro.otp.util.IConstants;
 import com.macboolbro.otp.R;
-import com.macboolbro.otp.Util;
+import com.macboolbro.otp.util.Util;
 import com.macboolbro.otp.receiver.ClipboardReceiver;
 
 /**

@@ -16,14 +16,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.macboolbro.otp.AppPreference;
-import com.macboolbro.otp.IConstants;
+import com.macboolbro.otp.util.AppPreference;
+import com.macboolbro.otp.util.IConstants;
 import com.macboolbro.otp.R;
-import com.macboolbro.otp.Util;
+import com.macboolbro.otp.util.Util;
 import com.rey.material.widget.Switch;
 
 public class MainActivity extends AppCompatActivity implements IConstants,

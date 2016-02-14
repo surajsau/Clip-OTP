@@ -9,8 +9,8 @@ import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import com.macboolbro.otp.IConstants;
-import com.macboolbro.otp.Util;
+import com.macboolbro.otp.util.IConstants;
+import com.macboolbro.otp.util.Util;
 import com.macboolbro.otp.service.NotificationService;
 
 /**

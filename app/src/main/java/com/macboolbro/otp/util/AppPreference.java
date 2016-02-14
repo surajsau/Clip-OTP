@@ -1,4 +1,4 @@
-package com.macboolbro.otp;
+package com.macboolbro.otp.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

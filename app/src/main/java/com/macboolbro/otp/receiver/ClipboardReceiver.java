@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.macboolbro.otp.IConstants;
+import com.macboolbro.otp.util.IConstants;
 
 /**
  * Created by MacboolBro on 08/02/16.

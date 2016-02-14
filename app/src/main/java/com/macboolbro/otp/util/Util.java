@@ -1,13 +1,10 @@
-package com.macboolbro.otp;
+package com.macboolbro.otp.util;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.macboolbro.otp.service.NotificationService;
-
-import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

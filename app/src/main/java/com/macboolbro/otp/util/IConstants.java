@@ -1,4 +1,4 @@
-package com.macboolbro.otp;
+package com.macboolbro.otp.util;
 
 /**
  * Created by MacboolBro on 08/02/16.
