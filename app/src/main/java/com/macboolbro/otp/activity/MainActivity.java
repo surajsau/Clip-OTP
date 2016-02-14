@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements IConstants,
 
     private void startIntroductionActivity() {
         Intent settingsIntent = new Intent(this, IntroductionActivity.class);
+        settingsIntent.putExtra(IS_FROM_MAIN, true);
         startActivity(settingsIntent);
     }
 
@@ -207,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements IConstants,
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=" + TWITTER_USERNAME)));
         }catch (Exception e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/" + TWITTER_USERNAME)));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + TWITTER_USERNAME)));
         }
     }
 

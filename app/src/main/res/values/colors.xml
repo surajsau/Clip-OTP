@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#0D47A1</color>
     <color name="colorAccent">#2c923d</color>
     <color name="colorPrimaryLight">#61a7ec</color>
+    <color name="colorPrimaryExtraLight">#cae2f9</color>
 
     <color name="disclaimer">#f4cdcd</color>
     <color name="disclaimer_text">#a93636</color>

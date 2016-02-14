@@ -3,19 +3,32 @@ package com.macboolbro.otp.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.macboolbro.otp.R;
+import com.macboolbro.otp.util.AppPreference;
 import com.macboolbro.otp.util.FadeTransformer;
+import com.macboolbro.otp.util.IConstants;
 
 /**
  * Created by MacboolBro on 13/02/16.
  */
-public class IntroductionActivity extends AppIntro {
+public class IntroductionActivity extends AppIntro implements IConstants {
+
+    private static final String TAG = IntroductionActivity.class.getSimpleName();
+
+    private boolean isFromMain;
+
+
+    private AppPreference preference;
 
     @Override
     public void init(Bundle savedInstanceState) {
+        preference = new AppPreference(this);
+
+        isFromMain = getIntent().getBooleanExtra(IS_FROM_MAIN, false);
 
         addFragment("Easy notifications",
                 "Now when you receive an SMS for OTP or passcode, a popup comes up. We\'ve made it so easy for you",
@@ -42,27 +55,39 @@ public class IntroductionActivity extends AppIntro {
                 R.drawable.enjoy);
 
         setCustomTransformer(new FadeTransformer());
+        setBarColor(ContextCompat.getColor(this, R.color.colorPrimaryExtraLight));
+        setSeparatorColor(ContextCompat.getColor(this, R.color.colorPrimaryExtraLight));
+
+        preference.putBoolean(IS_APP_FIRST_TIME, false);
     }
 
     @Override
     public void onSkipPressed() {
-        startActivity(new Intent(this, MainActivity.class));
+        if(isFromMain)
+            onBackPressed();
+        else
+            startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
-    public void onNextPressed() {
-
-    }
+    public void onNextPressed() {}
 
     @Override
     public void onDonePressed() {
-        startActivity(new Intent(this, MainActivity.class));
+        if(isFromMain)
+            onBackPressed();
+        else
+            startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
-    public void onSlideChanged() {
-
+    public void onBackPressed() {
+        Log.d(TAG, "onBackPressed");
+        super.onBackPressed();
     }
+
+    @Override
+    public void onSlideChanged() {}
 
     private void addFragment(String title, String description, int bgIcon) {
         addSlide(AppIntroFragment.newInstance(title, description, bgIcon, ContextCompat.getColor(this, android.R.color.white),

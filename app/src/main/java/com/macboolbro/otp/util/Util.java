@@ -14,30 +14,33 @@ import java.util.regex.Pattern;
  */
 public class Util implements IConstants {
 
-
-    public static void showShortToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-    }
-
     public static String otpFromMessage(String message) {
-        Pattern otpStringPattern = Pattern.compile(OTP_STRING_REGEX);
-        Pattern otpPattern = Pattern.compile(OTP_REGEX);
+        String lowerCase = message.toLowerCase();
+        boolean isOTPMessage = lowerCase.contains(OTP) ||
+                lowerCase.contains(ONE_TIME_PASSWORD) ||
+                lowerCase.contains(KEY) ||
+                lowerCase.contains(CODE) ||
+                lowerCase.contains(PASSCODE) ||
+                lowerCase.contains(PASSKEY) ||
+                lowerCase.contains(PASSWORD);
 
-        Matcher otpStringMatcher = otpStringPattern.matcher(message);
-        if(otpStringMatcher.find()) {
-            String otpString = otpStringMatcher.group(0);
-            Matcher otpMatcher = otpPattern.matcher(otpString);
+        if(isOTPMessage) {
+            Pattern otpStringPattern = Pattern.compile(OTP_STRING_REGEX);
+            Pattern otpPattern = Pattern.compile(OTP_REGEX);
 
-            if(otpMatcher.find()) {
-                String otp = otpMatcher.group(0);
-                return otp;
-            } else {
-                return null;
+            Matcher otpStringMatcher = otpStringPattern.matcher(message);
+            if (otpStringMatcher.find()) {
+                String otpString = otpStringMatcher.group(0);
+                Matcher otpMatcher = otpPattern.matcher(otpString);
+
+                if (otpMatcher.find()) {
+                    String otp = otpMatcher.group(0);
+                    return otp;
+                }
             }
         }
-        else {
-            return null;
-        }
+
+        return null;
     }
 
     public static PendingIntent getClipboardPendingIntent(Context context, String clipText) {

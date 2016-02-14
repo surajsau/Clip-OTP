@@ -33,11 +33,13 @@ public class InstructionsActivity extends AppIntro {
                 R.drawable.step_four);
 
         setCustomTransformer(new FadeTransformer());
+        setBarColor(ContextCompat.getColor(this, R.color.colorPrimaryExtraLight));
+        setSeparatorColor(ContextCompat.getColor(this, R.color.colorPrimaryExtraLight));
     }
 
     @Override
     public void onSkipPressed() {
-
+        onBackPressed();
     }
 
     @Override
@@ -47,7 +49,7 @@ public class InstructionsActivity extends AppIntro {
 
     @Override
     public void onDonePressed() {
-
+        onBackPressed();
     }
 
     @Override

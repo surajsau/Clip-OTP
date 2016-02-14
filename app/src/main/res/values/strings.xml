@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clip OTP</string>
+    <string name="app_name">Easy OTP</string>
     <string name="action_settings">Settings</string>
 
     <string name="disclaimer">Worry not! We aren\'t \'secretly\' storing all your SMS.
