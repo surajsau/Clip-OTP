@@ -13,7 +13,7 @@ Features:
  * It's super secure. Yes, I'm not going to steal any data from your phone or from your SMS. Trust me!
  * You always have the flexibility to turn our service on/off in the settings screen
 
-Stuffs that I learnt
+Stuff that I learnt
 --------------------
 
  * [BroadcastReceiver](http://developer.android.com/reference/android/content/BroadcastReceiver.html) for receiving incoming SMS and Clipboard
