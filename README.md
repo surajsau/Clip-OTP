@@ -2,7 +2,7 @@
 
 Copy. Paste. Sit back and relax.
 <p align="center">
-    <img src="https://cloud.githubusercontent.com/assets/5493586/13035295/4efbbf50-d372-11e5-8fe0-6462728f1346.png?raw=true" width="312" height="312" />
+    <img src="https://cloud.githubusercontent.com/assets/5493586/13035295/4efbbf50-d372-11e5-8fe0-6462728f1346.png?raw=true" width="312" height="312" target="_blank"/>
     <img src="https://cloud.githubusercontent.com/assets/5493586/13035298/64ea8580-d372-11e5-908b-f2f8b2c71bf1.png?raw=true" width="312" height="312" />
 </p>
 
